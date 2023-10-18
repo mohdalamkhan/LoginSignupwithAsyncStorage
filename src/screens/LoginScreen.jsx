@@ -1,4 +1,3 @@
-// screens/LoginScreen.js
 import React from 'react';
 import {
   View,
@@ -10,9 +9,12 @@ import {
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useAuthForm} from './useAuthForm';
 import {Controller} from 'react-hook-form';
+import {login} from '../redux/actions/auth';
+import {useDispatch} from 'react-redux';
 
 const LoginScreen = ({navigation}) => {
   const {control, handleSubmit, errors} = useAuthForm();
+  const dispatch = useDispatch();
 
   const handleLogin = async data => {
     try {
@@ -28,8 +30,12 @@ const LoginScreen = ({navigation}) => {
         return;
       }
 
+      dispatch(login(userData));
+
       console.log('Login successful');
       navigation.navigate('Home');
+
+      reset();
     } catch (error) {
       console.error('Error during login:', error);
     }
@@ -87,8 +93,6 @@ const LoginScreen = ({navigation}) => {
           <Text style={styles.signupBtn}>Signup</Text>
         </TouchableOpacity>
       </View>
-      {/* <Button title="Login" onPress={handleSubmit(handleLogin)} /> */}
-      {/* <Button title="Signup" onPress={() => navigation.navigate('Signup')} /> */}
     </View>
   );
 };

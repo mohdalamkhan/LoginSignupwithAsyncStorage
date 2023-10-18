@@ -1,19 +1,21 @@
 // screens/SignupScreen.js
-import React from 'react';
+import React, {useState} from 'react';
 import {
   View,
   Text,
   TextInput,
-  Button,
   StyleSheet,
   TouchableOpacity,
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useAuthForm} from './useAuthForm';
 import {Controller} from 'react-hook-form';
+import {useDispatch} from 'react-redux';
+import {signup} from '../redux/actions/auth';
 
 const SignupScreen = ({navigation}) => {
   const {control, handleSubmit, errors} = useAuthForm();
+  const dispatch = useDispatch();
 
   const handleSignup = async data => {
     try {
@@ -21,6 +23,8 @@ const SignupScreen = ({navigation}) => {
         email: data.email,
         password: data.password,
       };
+
+      dispatch(signup(userData));
 
       await AsyncStorage.setItem('userData', JSON.stringify(userData));
 
@@ -83,9 +87,6 @@ const SignupScreen = ({navigation}) => {
           <Text style={styles.signupBtn}>Login</Text>
         </TouchableOpacity>
       </View>
-
-      {/* <Button title="Signup" onPress={handleSubmit(handleSignup)} />
-      <Button title="Login" onPress={() => navigation.navigate('Login')} /> */}
     </View>
   );
 };

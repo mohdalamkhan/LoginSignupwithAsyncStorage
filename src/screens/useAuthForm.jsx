@@ -1,17 +1,18 @@
 // hooks/useAuthForm.js
-import { useForm, Controller } from 'react-hook-form';
+import {useForm, Controller} from 'react-hook-form';
 
- export const useAuthForm = () => {
+export const useAuthForm = () => {
   const {
     control,
     handleSubmit,
-    formState: { errors },
+    formState: {errors},
+    reset,
   } = useForm();
 
   return {
     control,
     handleSubmit,
     errors,
+    reset,
   };
 };
-
