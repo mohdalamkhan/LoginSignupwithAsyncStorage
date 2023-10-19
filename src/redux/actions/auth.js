@@ -5,3 +5,9 @@ export const login = userData => {
 export const signup = userData => {
   return {type: 'SIGNUP', payload: userData};
 };
+
+export const logoutUser = () => {
+  return {
+    type: 'LOGOUT',
+  };
+};

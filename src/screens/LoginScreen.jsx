@@ -13,7 +13,7 @@ import {login} from '../redux/actions/auth';
 import {useDispatch} from 'react-redux';
 
 const LoginScreen = ({navigation}) => {
-  const {control, handleSubmit, errors} = useAuthForm();
+  const {control, handleSubmit, errors, reset} = useAuthForm();
   const dispatch = useDispatch();
 
   const handleLogin = async data => {
@@ -30,14 +30,18 @@ const LoginScreen = ({navigation}) => {
         return;
       }
 
-      dispatch(login(userData));
+      setTimeout(() => {
+        // Dispatch the login action upon successful login
+        dispatch(login(userData));
 
-      console.log('Login successful');
-      navigation.navigate('Home');
-
-      reset();
+        // Clear the input fields
+        reset();
+        navigation.navigate('Home');
+      }, 500);
     } catch (error) {
       console.error('Error during login:', error);
+
+      alert('An error occurred during login. Please try again.');
     }
   };
 
@@ -108,7 +112,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   loginHeading: {
-    fontSize: 18,
+    fontSize: 24,
     fontWeight: 'bold',
     color: '#000',
     marginVertical: '15%',
@@ -125,7 +129,7 @@ const styles = StyleSheet.create({
   loginBtn: {
     width: '85%',
     height: 50,
-    backgroundColor: 'orange',
+    backgroundColor: 'blue',
     alignSelf: 'center',
     borderRadius: 15,
     marginVertical: 12,
@@ -134,8 +138,8 @@ const styles = StyleSheet.create({
   },
   loginText: {
     fontSize: 18,
-    fontWeight: '400',
-    color: '#000',
+    fontWeight: 'bold',
+    color: '#fff',
   },
   signtextBox: {
     flexDirection: 'row',
