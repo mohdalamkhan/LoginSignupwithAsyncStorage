@@ -15,19 +15,19 @@ const Stack = createNativeStackNavigator();
 
 const AppNavigator = () => {
   const user = useSelector(state => state.auth.user); // Assuming you have a 'user' in your Redux state
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  useEffect(() => {
-    const isUserAuthenticated = !!user;
+  // useEffect(() => {
+  //   const isUserAuthenticated = !!user;
 
-    if (isUserAuthenticated) {
-      // If the user is already authenticated, navigate to the HomeScreen
-      // You can use the 'Stack.Navigator' reference to navigate.
-    } else {
-      // If the user is not authenticated, you can decide to navigate to the LoginScreen.
-      // Here, we're navigating to the 'Login' screen when the user is not authenticated.
-    }
-  }, [user]);
+  //   if (isUserAuthenticated) {
+  //     // If the user is already authenticated, navigate to the HomeScreen
+  //     // You can use the 'Stack.Navigator' reference to navigate.
+  //   } else {
+  //     // If the user is not authenticated, you can decide to navigate to the LoginScreen.
+  //     // Here, we're navigating to the 'Login' screen when the user is not authenticated.
+  //   }
+  // }, [user]);
 
   return (
     <NavigationContainer>

@@ -89,6 +89,7 @@ const styles = StyleSheet.create({
   newsItem: {
     flexDirection: 'row',
     borderBottomColor: '#ccc',
+    // marginHorizontal: 10,
     marginLeft: 15,
   },
   newsImage: {
