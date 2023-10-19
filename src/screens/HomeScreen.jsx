@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import {useDispatch} from 'react-redux';
 import {logoutUser} from '../redux/actions/auth';
+import TabViewExample from './tabView/TabView';
 // import TabViewExample from './tabView/TabView';
 // import DrawerNavigator from '../../navigation/drawerNavigator/DrawerNavigator';
 
@@ -69,7 +70,8 @@ const HomeScreen = ({navigation}) => {
         {/* <DrawerNavigator /> */}
         <Text style={styles.headerText}>NATIONAL REVIEW</Text>
       </View>
-      {/* <TabViewExample /> */}
+      <TabViewExample />
+      <Text>testing</Text>
       <FlatList
         data={newsData}
         renderItem={renderItem}
